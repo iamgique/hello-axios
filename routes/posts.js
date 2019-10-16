@@ -24,5 +24,16 @@ router.get('/:id', async (req, res) => {
     }
 })
 
+router.post('/', async (req, res) => {
+    try {
+        const response = await posts.create_posts(req.body)
+        res.setHeader('Content-Type', 'application/json');
+        res.send(JSON.stringify(response.data));
+    } catch (error) {
+        res.setHeader('Content-Type', 'application/json');
+        res.send(JSON.stringify(error.message));
+    }
+})
+
 
 module.exports = router;

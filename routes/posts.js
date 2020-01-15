@@ -5,6 +5,7 @@ const posts = require('../controller/posts.controller')
 router.get('/', async (req, res) => {
     try {
         const response = await posts.get_posts()
+        console.log(response)
         res.setHeader('Content-Type', 'application/json');
         res.send(JSON.stringify(response.data));
     } catch (error) {
